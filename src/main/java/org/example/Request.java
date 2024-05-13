@@ -1,28 +1,42 @@
 package org.example;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Request {
+    static Logger logger = MyLogger.getInstance().getLogger();
+    private final String[] requestLine;
+    private final List<String> headers;
+    private final String body;
 
-    private String method;
-    private String path;
+    private final String method;
+    private final String path;
+    private final List<NameValuePair> queryParams;
 
-    private Request(String method, String path) {
+    public Request(String[] requestLine, String method, String path, List<String> headers, String body, List<NameValuePair> queryParams) {
+        this.requestLine = requestLine;
+        this.headers = headers;
+        this.body = body;
         this.method = method;
         this.path = path;
+        this.queryParams = queryParams;
     }
 
-    public static Request createRequest(String requestLine) {
+    public String[] getRequestLine() {
+        return requestLine;
+    }
 
-        final var parts = requestLine.split(" ");
+    public List<String> getHeaders() {
+        return headers;
+    }
 
-        if (parts.length != 3) {
-            // just close socket
-            return null; //todo Exception
-        }
-
-        final var method = parts[0];
-        final var path = parts[1];
-
-        return new Request(method, path);
+    public String getBody() {
+        return body;
     }
 
     public String getMethod() {
@@ -31,5 +45,27 @@ public class Request {
 
     public String getPath() {
         return path;
+    }
+
+    public List<NameValuePair> getQueryParams() {
+        if (queryParams == null) {
+            logger.log(Level.WARNING, "Query-параметры отсутствуют");
+        }
+        return queryParams;
+    }
+
+    public String getQueryParam(String name) {
+        if (queryParams == null) {
+            logger.log(Level.WARNING, "Query-параметр отсутствует");
+            return null;
+        }
+
+        for (NameValuePair param : queryParams) {
+            if (param.getName().equals(name)) {
+                return param.getValue();
+            }
+        }
+        logger.log(Level.WARNING, "Query-параметры не найден");
+        return null;
     }
 }
