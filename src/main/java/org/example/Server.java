@@ -13,8 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Server {
-    static Logger logger = MyLogger.getInstance().getLogger();
     private static final List<String> validPaths = List.of("/index.html", "/spring.svg", "/spring.png", "/resources.html", "/styles.css", "/app.js", "/links.html", "/forms.html", "/classic.html", "/events.html", "/events.js");
+    static Logger logger = MyLogger.getInstance().getLogger();
     private static ConcurrentMap<String, Map<String, Handler>> handlers;
     private final ExecutorService poolExecutor;
 

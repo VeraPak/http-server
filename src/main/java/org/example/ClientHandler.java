@@ -1,6 +1,8 @@
 package org.example;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,7 +26,7 @@ public class ClientHandler implements Runnable {
             final var limit = 4096;
 
             Request request = RequestBuilder.build(in, limit);
-            if(request == null){
+            if (request == null) {
                 try {
                     out.write((
                             Response.BAD_REQUEST.getMessage()
@@ -61,20 +63,19 @@ public class ClientHandler implements Runnable {
                     Handler handler = handlerMap.get(request.getPath());
                     handler.handle(request, out);
                 }
-            }
-
-            try {
-                out.write((
-                        Response.OK_BY_PATH.getMessage(mimeType, length)
-                ).getBytes());
-                Files.copy(filePath, out);
-                out.flush();
-            } catch (IOException e) {
-                logger.log(Level.WARNING, String.format("Ошибка при отправке ответа клиенту: %s", e.getMessage()));
+                try {
+                    out.write((
+                            Response.OK_BY_PATH.getMessage(mimeType, length)
+                    ).getBytes());
+                    Files.copy(filePath, out);
+                    out.flush();
+                } catch (IOException e) {
+                    logger.log(Level.WARNING, String.format("Ошибка при отправке ответа клиенту: %s", e.getMessage()));
+                }
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.WARNING, String.format("Ошибка при обработке клиента: %s", e.getMessage()));
         }
     }
 }

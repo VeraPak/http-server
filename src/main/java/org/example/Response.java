@@ -1,10 +1,5 @@
 package org.example;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 public enum Response {
     BAD_REQUEST("HTTP/1.1 400 Bad Request\r\n" +
             "Content-Length: 0\r\n" +
@@ -29,12 +24,14 @@ public enum Response {
 
     private String message;
 
-    Response(String message){
+    Response(String message) {
         this.message = message;
     }
-    public String getMessage(){
+
+    public String getMessage() {
         return message;
     }
+
     public String getMessage(String contentType, long contentLength) {
         this.message = String.format(message, contentType, contentLength);
         return message;

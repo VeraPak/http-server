@@ -1,68 +1,40 @@
-мая 13, 2024 3:02:52 PM org.example.MyLogger getInstance
+мая 13, 2024 4:01:38 PM org.example.MyLogger getInstance
 INFO: Создан логгер
-мая 13, 2024 3:02:52 PM org.example.Server <init>
+мая 13, 2024 4:01:38 PM org.example.Server <init>
 INFO: Создан новый сервер на 64 потоков
-мая 13, 2024 3:02:52 PM org.example.Server listen
+мая 13, 2024 4:01:39 PM org.example.Server listen
 INFO: Прослушиваем порт 9999
-мая 13, 2024 3:03:00 PM org.example.RequestBuilder build
+мая 13, 2024 4:01:41 PM org.example.RequestBuilder build
 INFO: Метод: GET
-мая 13, 2024 3:03:00 PM org.example.RequestBuilder build
-INFO: Путь: /classic.html
-мая 13, 2024 3:03:00 PM org.example.RequestBuilder build
-INFO: Query: null
-мая 13, 2024 3:03:00 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 13, 2024 3:03:00 PM org.example.Request getQueryParams
-WARNING: Query-параметры отсутствуют
-мая 13, 2024 3:03:00 PM org.example.Request getQueryParam
-WARNING: Query-параметр отсутствует
-мая 13, 2024 3:03:06 PM org.example.RequestBuilder build
-INFO: Метод: GET
-мая 13, 2024 3:03:06 PM org.example.RequestBuilder build
-INFO: Путь: /classic.html
-мая 13, 2024 3:03:06 PM org.example.RequestBuilder build
-INFO: Query: null
-мая 13, 2024 3:03:06 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 13, 2024 3:03:06 PM org.example.Request getQueryParams
-WARNING: Query-параметры отсутствуют
-мая 13, 2024 3:03:06 PM org.example.Request getQueryParam
-WARNING: Query-параметр отсутствует
-мая 13, 2024 3:04:42 PM org.example.RequestBuilder build
-WARNING: Request line не найден
-мая 13, 2024 3:04:42 PM org.example.RequestBuilder build
-INFO: Метод: GET
-мая 13, 2024 3:04:42 PM org.example.RequestBuilder build
-INFO: Путь: /classic.html
-мая 13, 2024 3:04:42 PM org.example.RequestBuilder build
-INFO: Query: null
-мая 13, 2024 3:04:42 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 13, 2024 3:04:42 PM org.example.Request getQueryParams
-WARNING: Query-параметры отсутствуют
-мая 13, 2024 3:04:42 PM org.example.Request getQueryParam
-WARNING: Query-параметр отсутствует
-мая 13, 2024 3:04:55 PM org.example.RequestBuilder build
-INFO: Метод: GET
-мая 13, 2024 3:04:55 PM org.example.RequestBuilder build
+мая 13, 2024 4:01:41 PM org.example.RequestBuilder build
 INFO: Путь: /index.html
-мая 13, 2024 3:04:55 PM org.example.RequestBuilder build
+мая 13, 2024 4:01:41 PM org.example.RequestBuilder build
 INFO: Query: null
-мая 13, 2024 3:04:55 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 13, 2024 3:04:55 PM org.example.Request getQueryParams
+мая 13, 2024 4:01:41 PM org.example.RequestBuilder build
+INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
+мая 13, 2024 4:01:41 PM org.example.Request getQueryParams
 WARNING: Query-параметры отсутствуют
-мая 13, 2024 3:04:55 PM org.example.Request getQueryParam
+мая 13, 2024 4:01:41 PM org.example.Request getQueryParam
 WARNING: Query-параметр отсутствует
-мая 13, 2024 3:05:01 PM org.example.RequestBuilder build
+мая 13, 2024 4:03:32 PM org.example.RequestBuilder build
+WARNING: Request line не найден
+мая 13, 2024 4:03:32 PM org.example.RequestBuilder build
 INFO: Метод: GET
-мая 13, 2024 3:05:01 PM org.example.RequestBuilder build
-INFO: Путь: /classic.html
-мая 13, 2024 3:05:01 PM org.example.RequestBuilder build
+мая 13, 2024 4:03:32 PM org.example.RequestBuilder build
+INFO: Путь: /index.html
+мая 13, 2024 4:03:32 PM org.example.RequestBuilder build
 INFO: Query: null
-мая 13, 2024 3:05:01 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 13, 2024 3:05:01 PM org.example.Request getQueryParams
+мая 13, 2024 4:03:32 PM org.example.RequestBuilder build
+INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: none, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
+мая 13, 2024 4:03:32 PM org.example.Request getQueryParams
 WARNING: Query-параметры отсутствуют
-мая 13, 2024 3:05:01 PM org.example.Request getQueryParam
+мая 13, 2024 4:03:32 PM org.example.Request getQueryParam
 WARNING: Query-параметр отсутствует
+мая 13, 2024 4:03:49 PM org.example.RequestBuilder build
+INFO: Метод: GET
+мая 13, 2024 4:03:49 PM org.example.RequestBuilder build
+INFO: Путь: /
+мая 13, 2024 4:03:49 PM org.example.RequestBuilder build
+INFO: Query: [title=, value=, value=, image=]
+мая 13, 2024 4:03:49 PM org.example.RequestBuilder build
+INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: same-site, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Referer: http://localhost:63342/, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]

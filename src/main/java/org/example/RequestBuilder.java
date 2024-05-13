@@ -6,20 +6,19 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class RequestBuilder {
-    static Logger logger = MyLogger.getInstance().getLogger();
-
     private static final String GET = "GET";
     private static final String POST = "POST";
     private static final List<String> allowedMethods = List.of(GET, POST);
-
     private static final byte[] delimiter = new byte[]{'\r', '\n'};
     private static final byte[] doubleDelimiter = new byte[]{'\r', '\n', '\r', '\n'};
-
+    static Logger logger = MyLogger.getInstance().getLogger();
     private static String[] requestLine;
     private static List<String> headers;
     private static String body;
@@ -42,14 +41,14 @@ public class RequestBuilder {
             }
 
             requestLine = new String(Arrays.copyOf(buffer, requestLineEnd)).split(" ");
-            if(requestLine.length != 3){
+            if (requestLine.length != 3) {
                 logger.log(Level.WARNING, String.format("Элементов в строке : %d", requestLine.length));
                 return null;
             }
 
             //method
             method = requestLine[0];
-            if(!allowedMethods.contains(method)){
+            if (!allowedMethods.contains(method)) {
                 logger.log(Level.WARNING, String.format("Недопустимый метод: %s", method));
                 return null;
             }
@@ -61,7 +60,7 @@ public class RequestBuilder {
                 logger.log(Level.WARNING, String.format("Недопустимый путь: %s", path));
                 return null;
             }
-            if(path.contains("?")) {
+            if (path.contains("?")) {
                 final var pathEnd = indexOf(buffer, new byte[]{'?'}, 0, requestLineEnd);
                 path = new String(Arrays.copyOfRange(buffer, method.length() + 1, pathEnd));
 
@@ -78,7 +77,7 @@ public class RequestBuilder {
             //headers
             final var headersStart = requestLineEnd + doubleDelimiter.length;
             final var headersEnd = indexOf(buffer, doubleDelimiter, headersStart, read);
-            if(headersEnd == -1) {
+            if (headersEnd == -1) {
                 logger.log(Level.WARNING, "Заголовки не найдены");
                 return null;
             }
@@ -86,7 +85,7 @@ public class RequestBuilder {
             in.reset();
             in.skip(headersStart);
 
-            final var headersBytes = in.readNBytes(headersEnd-headersStart);
+            final var headersBytes = in.readNBytes(headersEnd - headersStart);
             headers = Arrays.asList(new String(headersBytes).split("\r\n"));
             logger.log(Level.INFO, String.format("Заголовки: %s", headers));
 
