@@ -2,13 +2,13 @@ package org.example;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.commons.collections4.MultiValuedMap;
+import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +21,7 @@ public class RequestBuilder {
     static Logger logger = MyLogger.getInstance().getLogger();
     private static String[] requestLine;
     private static List<String> headers;
-    private static String body;
+    private static MultiValuedMap<String, String> body;
     private static String method;
     private static String path;
     private static List<NameValuePair> query;
@@ -98,10 +98,23 @@ public class RequestBuilder {
                     final var length = Integer.parseInt(contentLength.get());
                     final var bodyBytes = in.readNBytes(length);
 
-                    body = new String(bodyBytes);
-                    logger.log(Level.INFO, String.format("Тело запроса: %s", body));
+                    var bodyText = new String(bodyBytes);
+                    List<NameValuePair> t = URLEncodedUtils.parse(bodyText, StandardCharsets.UTF_8);
+
+                    final var contentType = extractHeader(headers, "Content-Type");
+
+                    if (contentType.isPresent() && contentType.get().equals("application/x-www-form-urlencoded")) {
+                        body = new ArrayListValuedHashMap<>();
+                        for(NameValuePair line : t) {
+                            String key = line.getName().trim();
+                            String value = line.getValue().trim();
+                            body.put(key, value);
+                        }
+                    }
                 }
             }
+            logger.log(Level.INFO, String.format("Тело запроса: %s", body));
+
             return new Request(requestLine, method, path, headers, body, query);
 
         } catch (IOException e) {

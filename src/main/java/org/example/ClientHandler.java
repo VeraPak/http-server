@@ -38,8 +38,8 @@ public class ClientHandler implements Runnable {
                 return;
             }
 
-            System.out.println("ПАРАМЕТРЫ: " + request.getQueryParams());
-            System.out.println("ПАРАМЕТР: " + request.getQueryParam("title"));
+            System.out.println("ПАРАМЕТРЫ в теле: " + request.getPostParams());
+            System.out.println("ПАРАМЕТР в теле: " + request.getPostParam("title"));
 
             if (!Server.getValidPaths().contains(request.getPath())) {
                 try {
