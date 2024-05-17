@@ -1,34 +1,24 @@
-мая 15, 2024 1:52:52 PM org.example.MyLogger getInstance
+мая 17, 2024 10:54:35 PM org.example.MyLogger getInstance
 INFO: Создан логгер
-мая 15, 2024 1:52:52 PM org.example.Server <init>
+мая 17, 2024 10:54:35 PM org.example.Server <init>
 INFO: Создан новый сервер на 64 потоков
-мая 15, 2024 1:52:52 PM org.example.Server listen
+мая 17, 2024 10:54:35 PM org.example.Server listen
 INFO: Прослушиваем порт 9999
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Метод: POST
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Путь: /
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Query: null
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
-INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Content-Length: 99, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, Origin: http://localhost:63342, Content-Type: application/x-www-form-urlencoded, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: same-site, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Referer: http://localhost:63342/, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
-INFO: Тело запроса: {image=[], title=[поле], value=[поле, поле]}
-мая 15, 2024 1:53:20 PM org.example.Request getQueryParams
-WARNING: Query-параметры отсутствуют
-мая 15, 2024 1:53:20 PM org.example.Request getQueryParam
-WARNING: Query-параметр отсутствует
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
+INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, Content-Length: 267071, Cache-Control: max-age=0, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, sec-ch-ua-platform: "macOS", Upgrade-Insecure-Requests: 1, Origin: http://localhost:63342, Content-Type: multipart/form-data; boundary=----WebKitFormBoundarycF7P8lvIRCM8em1C, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7, Sec-Fetch-Site: same-site, Sec-Fetch-Mode: navigate, Sec-Fetch-User: ?1, Sec-Fetch-Dest: document, Referer: http://localhost:63342/, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
+INFO: Тело запроса: {image=[name=ООП.png, StoreLocation=temp/upload_da2a3a8d_9931_43a0_bd9d_c90c53ca4f50_00000003.tmp, size=266581 bytes, isFormField=false, FieldName=image], title=[поле 2], value=[поле 3, поле 4]}
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Метод: GET
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Путь: /favicon.ico
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Query: null
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
+мая 17, 2024 10:55:10 PM org.example.RequestBuilder build
 INFO: Заголовки: [st: localhost:9999, Connection: keep-alive, sec-ch-ua: "Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122", sec-ch-ua-mobile: ?0, User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36, sec-ch-ua-platform: "macOS", Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8, Sec-Fetch-Site: same-origin, Sec-Fetch-Mode: no-cors, Sec-Fetch-Dest: image, Referer: http://localhost:9999/, Accept-Encoding: gzip, deflate, br, zstd, Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7, Cookie: Idea-f147beec=0523d3c7-62ec-4ccc-8da8-1e6853fba1cd]
-мая 15, 2024 1:53:20 PM org.example.RequestBuilder build
-INFO: Тело запроса: {image=[], title=[поле], value=[поле, поле]}
-мая 15, 2024 1:53:20 PM org.example.Request getQueryParams
-WARNING: Query-параметры отсутствуют
-мая 15, 2024 1:53:20 PM org.example.Request getQueryParam
-WARNING: Query-параметр отсутствует

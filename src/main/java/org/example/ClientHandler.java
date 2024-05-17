@@ -38,8 +38,9 @@ public class ClientHandler implements Runnable {
                 return;
             }
 
-            System.out.println("ПАРАМЕТРЫ в теле: " + request.getPostParams());
-            System.out.println("ПАРАМЕТР в теле: " + request.getPostParam("title"));
+            System.out.println("ПАРАМЕТРЫ в теле: " + request.getParts());
+            System.out.println("ПАРАМЕТР value в теле: " + request.getPart("value"));
+            System.out.println("ПАРАМЕТР image в теле: " + request.getPart("image"));
 
             if (!Server.getValidPaths().contains(request.getPath())) {
                 try {

@@ -12,13 +12,13 @@ public class Request {
     static Logger logger = MyLogger.getInstance().getLogger();
     private final String[] requestLine;
     private final List<String> headers;
-    private final MultiValuedMap<String, String> body;
+    private final MultiValuedMap<String, Object> body;
 
     private final String method;
     private final String path;
     private final List<NameValuePair> queryParams;
 
-    public Request(String[] requestLine, String method, String path, List<String> headers, MultiValuedMap<String, String> body, List<NameValuePair> queryParams) {
+    public Request(String[] requestLine, String method, String path, List<String> headers, MultiValuedMap<String, Object> body, List<NameValuePair> queryParams) {
         this.requestLine = requestLine;
         this.headers = headers;
         this.body = body;
@@ -35,7 +35,7 @@ public class Request {
         return headers;
     }
 
-    public MultiValuedMap<String, String> getBody() {
+    public MultiValuedMap<String, Object> getBody() {
         return body;
     }
 
@@ -69,7 +69,7 @@ public class Request {
         return null;
     }
 
-    public Collection<String> getPostParam(String name){
+    public Collection<Object> getPostParam(String name){
         if(body == null) {
             logger.log(Level.WARNING, "Параметры отсутствуют в теле запроса");
             return null;
@@ -81,7 +81,7 @@ public class Request {
         return body.get(name);
     }
 
-    public MultiValuedMap<String, String> getPostParams(){
+    public MultiValuedMap<String, Object> getPostParams(){
         if(body == null) {
             logger.log(Level.WARNING, "Параметры отсутствуют в теле запроса");
             return null;
@@ -89,4 +89,23 @@ public class Request {
         return body;
     }
 
+    public Collection<Object> getPart(String name){
+        if(body == null) {
+            logger.log(Level.WARNING, "Параметры отсутствуют в теле запроса");
+            return null;
+        }
+        if(!body.containsKey(name)) {
+            logger.log(Level.WARNING, "Параметр отсутствует в теле запроса");
+            return null;
+        }
+        return body.get(name);
+    }
+
+    public MultiValuedMap<String, Object> getParts() {
+        if(body == null) {
+            logger.log(Level.WARNING, "Параметры отсутствуют в теле запроса");
+            return null;
+        }
+        return body;
+    }
 }

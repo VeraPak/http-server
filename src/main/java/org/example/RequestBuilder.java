@@ -1,12 +1,17 @@
 package org.example;
 
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
+import org.apache.commons.fileupload.*;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.logging.Level;
@@ -18,15 +23,15 @@ public class RequestBuilder {
     private static final List<String> allowedMethods = List.of(GET, POST);
     private static final byte[] delimiter = new byte[]{'\r', '\n'};
     private static final byte[] doubleDelimiter = new byte[]{'\r', '\n', '\r', '\n'};
-    static Logger logger = MyLogger.getInstance().getLogger();
+    private static final Logger logger = MyLogger.getInstance().getLogger();
+
     private static String[] requestLine;
     private static List<String> headers;
-    private static MultiValuedMap<String, String> body;
+    private static MultiValuedMap<String, Object> body;
     private static String method;
     private static String path;
     private static List<NameValuePair> query;
 
-    //TODO убрать static у createRequest() ?
     public static Request build(BufferedInputStream in, int limit) {
         try {
             in.mark(limit);
@@ -94,26 +99,59 @@ public class RequestBuilder {
                 in.skip(doubleDelimiter.length);
 
                 final var contentLength = extractHeader(headers, "Content-Length");
-                if (contentLength.isPresent()) {
+                final var contentType = extractHeader(headers, "Content-Type");
+
+                if (contentLength.isPresent() && contentType.isPresent()) {
+                    body = new ArrayListValuedHashMap<>();
                     final var length = Integer.parseInt(contentLength.get());
-                    final var bodyBytes = in.readNBytes(length);
 
-                    var bodyText = new String(bodyBytes);
-                    List<NameValuePair> t = URLEncodedUtils.parse(bodyText, StandardCharsets.UTF_8);
-
-                    final var contentType = extractHeader(headers, "Content-Type");
-
-                    if (contentType.isPresent() && contentType.get().equals("application/x-www-form-urlencoded")) {
-                        body = new ArrayListValuedHashMap<>();
-                        for(NameValuePair line : t) {
+                    if (contentType.get().startsWith("text/plain")) {
+                        final var bodyBytes = in.readNBytes(length);
+                        var bodyText = new String(bodyBytes);
+                        for (String line : bodyText.split("\r\n")) {
+                            String[] keyValue = line.split("=", 2);
+                            String key = keyValue[0].trim();
+                            String value = keyValue[1].trim();
+                            body.put(key, value);
+                        }
+                    } else if(contentType.get().startsWith("application/x-www-form-urlencoded")){
+                        final var bodyBytes = in.readNBytes(length);
+                        var bodyText = new String(bodyBytes);
+                        var parsedBody = URLEncodedUtils.parse(bodyText, StandardCharsets.UTF_8);
+                        for (NameValuePair line : parsedBody) {
                             String key = line.getName().trim();
                             String value = line.getValue().trim();
                             body.put(key, value);
                         }
+                    } else if(contentType.get().startsWith("multipart/form-data")) {
+                        try {
+                            var request = new MyRequestContext("utf-8", contentType.get(), length, in); //TODO in уже прочитан
+
+                            DiskFileItemFactory factory = new DiskFileItemFactory();
+                            factory.setSizeThreshold(100);
+                            factory.setRepository(new File("temp"));
+
+                            ServletFileUpload upload = new ServletFileUpload(factory);
+
+                            List<FileItem> items = upload.parseRequest(request);
+                            Iterator<FileItem> iterator = items.iterator();
+                            while (iterator.hasNext()){
+                                FileItem item = iterator.next();
+                                if (item.isFormField()) {
+                                    body.put(item.getFieldName(), item.getString("utf-8"));
+                                } else {
+                                    body.put(item.getFieldName(), item);
+                                }
+                            }
+                        } catch (FileUploadException e) {
+                            logger.log(Level.WARNING, String.format("Ошибка при попытке распарсить multipart/form-data %s", e.getMessage()));
+                        }
+                    } else {
+                        logger.log(Level.WARNING, String.format("Content-Type %s отсутствует", contentType.get()));
                     }
                 }
+                logger.log(Level.INFO, String.format("Тело запроса: %s", body));
             }
-            logger.log(Level.INFO, String.format("Тело запроса: %s", body));
 
             return new Request(requestLine, method, path, headers, body, query);
 
@@ -141,5 +179,39 @@ public class RequestBuilder {
             return i;
         }
         return -1;
+    }
+}
+
+class MyRequestContext implements RequestContext {
+    private String characterEncoding;
+    private String contentType;
+    private int contentLength;
+    private InputStream inputStream;
+
+    public MyRequestContext(String characterEncoding, String contentType, int contentLength, InputStream inputStream) {
+        this.characterEncoding = characterEncoding;
+        this.contentType = contentType;
+        this.contentLength = contentLength;
+        this.inputStream = inputStream;
+    }
+
+    @Override
+    public String getCharacterEncoding() {
+        return characterEncoding;
+    }
+
+    @Override
+    public String getContentType() {
+        return contentType;
+    }
+
+    @Override
+    public int getContentLength() {
+        return contentLength;
+    }
+
+    @Override
+    public InputStream getInputStream() throws IOException {
+        return inputStream;
     }
 }
